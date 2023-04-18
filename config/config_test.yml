@@ -1,0 +1,13 @@
+# data
+project: "cordex"
+product: "output"
+domain: "SAM-22"
+institute: "GERICS"
+driving_model: "NCC-NorESM1-M"
+experiment: "rcp85"
+ensemble: "r1i1p1"
+rcm_model: "REMO2015"
+downscaling: "v1"
+frequency: "3hr"
+variable: "pr"
+version: "v20191029"
