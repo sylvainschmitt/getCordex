@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mail-type=ALL
 #SBATCH --account=agap
-#SBATCH --partition=agap_norm
+#SBATCH --partition=defq
 
 # Environment
 module purge
