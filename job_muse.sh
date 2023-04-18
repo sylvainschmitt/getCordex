@@ -1,13 +1,3 @@
-
-# Variables
-CONFIG=config/ressources.genologin.yaml
-COMMAND="sbatch --cpus-per-task={cluster.cpus} --time={cluster.time} --mem={cluster.mem} -J {cluster.jobname} -o snake_subjob_log/{cluster.jobname}.%N.%j.out -e snake_subjob_log/{cluster.jobname}.%N.%j.err"
-CORES=100
-mkdir -p snake_subjob_log
-
-# Workflow
-snakemake -s Snakefile --use-singularity -j $CORES --cluster-config $CONFIG --cluster "$COMMAND" --keep-going
-
 #!/bin/bash
 #SBATCH --time=96:00:00
 #SBATCH -J getCordex
@@ -42,6 +32,3 @@ echo 'Job ID:' $SLURM_JOB_ID
 echo 'Number of nodes assigned to job:' $SLURM_JOB_NUM_NODES
 echo 'Nodes assigned to job:' $SLURM_JOB_NODELIST
 echo 'Directory:' $(pwd)
-echo '########################################'
-echo '##        TROLL PARAMETERS           ###'
-echo '########################################'
