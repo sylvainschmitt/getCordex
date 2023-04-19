@@ -1,14 +1,14 @@
 rule download:
     input:
-        "wget/{driving_model}.{experiment}.{rcm_model}.{variable}.sh"
+        "wget/{driving_model}_{rcm_model}.{experiment}.sh"
     output:
-        directory("results/{driving_model}_{rcm_model}/{experiment}/{variable}/")
+        directory("results/{driving_model}_{rcm_model}/{experiment}/")
     log:
-        "results/logs/download_{driving_model}_{rcm_model}_{experiment}_{variable}.log"
+        "results/logs/download_{driving_model}_{rcm_model}_{experiment}.log"
     benchmark:
-        "results/benchmarks/download_{driving_model}_{rcm_model}_{experiment}_{variable}.benchmark.txt"
+        "results/benchmarks/download_{driving_model}_{rcm_model}_{experiment}.benchmark.txt"
     params:
-        script="{driving_model}.{experiment}.{rcm_model}.{variable}.sh"
+        script="{driving_model}_{rcm_model}.{experiment}"
     threads: 1
     resources:
         mem_mb=1000

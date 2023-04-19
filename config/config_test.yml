@@ -1,5 +1,4 @@
 # data
-driving_model: "NCC-NorESM1-M"
+driving_model: "MPI-M-MPI-ESM-MR"
+rcm_model: "ICTP-RegCM4-7"
 experiment: "rcp85"
-rcm_model: "REMO2015"
-variable: "pr"
