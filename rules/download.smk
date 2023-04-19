@@ -8,7 +8,7 @@ rule download:
     benchmark:
         "results/benchmarks/download_{driving_model}_{rcm_model}_{experiment}.benchmark.txt"
     params:
-        script="{driving_model}_{rcm_model}.{experiment}"
+        script="{driving_model}_{rcm_model}.{experiment}.sh"
     threads: 1
     resources:
         mem_mb=1000

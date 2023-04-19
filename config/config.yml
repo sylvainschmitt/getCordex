@@ -1,4 +1,10 @@
 # data
 driving_model: "MPI-M-MPI-ESM-MR"
-rcm_model: "RegCM4-7"
-experiment: ["historical", "rcp85"]
+rcm_model: "ICTP-RegCM4-7"
+experiment: ["historical", "rcp26", "rcp85"]
+variable: ["hurs", "pr", "rsds", "rsus", "sfcWind", "tas"]
+
+# extract
+# Set for Paracou
+xutm: 5.267241344232334
+yutm: -52.92436802555797

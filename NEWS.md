@@ -1,3 +1,8 @@
+# getCordex 0.1.9004
+
+- exract_var & join_exp
+- TODO: singularity img & prep_troll (names and units)
+
 # getCordex 0.1.9003
 
 - by experiment (all variables at once)
