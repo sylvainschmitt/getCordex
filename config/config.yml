@@ -1,29 +1,5 @@
 # data
-inventory: "guyafor.csv"
-n_ind_species: 6
-n_years: 10
-n_census: 4
-filter_data: no
-n_sp_max: 5
-n_ind_sp_max: 5
-
-# model
-model: "gompertzsumpar.stan"
-chains: 4
-parallel_chains: 1
-refresh: 100
-max_treedepth: 12
-iter_warmup: 2000
-iter_sampling: 2000
-pars: ["lp__", "gmax_s", "sigmaG"]
-quantiles: [0.05, 0.25, 0.5, 0.75, 0.95]
-
-# post
-n_pars: 2
-dpi: 100
-width: 6
-height: 6
-n_posteriors: 100
-quant_post: [0.05, 0.25, 0.5, 0.75, 0.95]
-
-
+driving_model: "NCC-NorESM1-M"
+experiment: "rcp85"
+rcm_model: "REMO2015"
+variable: "pr"

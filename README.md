@@ -63,10 +63,20 @@ snakemake -j 1 --resources mem_mb=10000 # run
 
 ## HPC
 
+### Muse
+
 ``` bash
 module load snakemake # for test on node
 snakemake -np # dry run
 sbatch job_muse.sh # run
+```
+
+### Genologin
+
+``` bash
+module load bioinfo/snakemake-5.25.0 # for test on node
+snakemake -np # dry run
+sbatch job_genologin.sh # run
 ```
 
 # Workflow

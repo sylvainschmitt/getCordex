@@ -1,19 +1,19 @@
 rule download:
     input:
-        "wget/{project}.{product}.{domain}.{institute}.{driving_model}.{experiment}.{ensemble}.{rcm_model}.{downscaling}.{frequency}.{variable}.{version}.sh"
+        "wget/{driving_model}.{experiment}.{rcm_model}.{variable}.sh"
     output:
-        directory("results/{project}/{product}/{domain}/{institute}/{driving_model}/{experiment}/{ensemble}/{rcm_model}/{downscaling}/{frequency}/{variable}/{version}/")
+        directory("results/{driving_model}_{rcm_model}/{experiment}/{variable}/")
     log:
-        "results/logs/download_{project}_{product}_{domain}_{institute}_{driving_model}_{experiment}_{ensemble}_{rcm_model}_{downscaling}_{frequency}_{variable}_{version}.log"
+        "results/logs/download_{driving_model}_{rcm_model}_{experiment}_{variable}.log"
     benchmark:
-        "results/benchmarks/download_{project}_{product}_{domain}_{institute}_{driving_model}_{experiment}_{ensemble}_{rcm_model}_{downscaling}_{frequency}_{variable}_{version}.benchmark.txt"
+        "results/benchmarks/download_{driving_model}_{rcm_model}_{experiment}_{variable}.benchmark.txt"
     params:
-        script="{project}.{product}.{domain}.{institute}.{driving_model}.{experiment}.{ensemble}.{rcm_model}.{downscaling}.{frequency}.{variable}.{version}.sh"
+        script="{driving_model}.{experiment}.{rcm_model}.{variable}.sh"
     threads: 1
     resources:
         mem_mb=1000
     shell:
-        "mkdir {output} ; "
+        "mkdir -p {output} ; "
         "cp {input} {output} ; "
         "cd {output} ; "
         "bash {params.script} -u ; "

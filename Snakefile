@@ -2,19 +2,11 @@ configfile: "config/config_test.yml"
 
 rule all:
    input:
-        expand("results/{project}/{product}/{domain}/{institute}/{driving_model}/{experiment}/{ensemble}/{rcm_model}/{downscaling}/{frequency}/{variable}/{version}/", 
-                project=config["project"],
-                product=config["product"],
-                domain=config["domain"],
-                institute=config["institute"],
+        expand("results/{driving_model}_{rcm_model}/{experiment}/{variable}/", 
                 driving_model=config["driving_model"],
                 experiment=config["experiment"],
-                ensemble=config["ensemble"],
                 rcm_model=config["rcm_model"],
-                downscaling=config["downscaling"],
-                frequency=config["frequency"],
-                variable=config["variable"],
-                version=config["version"])
+                variable=config["variable"])
 
 # Rules #
 include: "rules/download.smk"
