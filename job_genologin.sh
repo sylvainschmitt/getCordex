@@ -3,18 +3,17 @@
 #SBATCH -J getCordex
 #SBATCH -o getCordex.%N.%j.out
 #SBATCH -e getCordex.%N.%j.err
-#SBATCH --mem=1G
+#SBATCH --mem=5G
 #SBATCH --cpus-per-task=1
 #SBATCH --mail-type=ALL
-#SBATCH --account=agap
-#SBATCH --partition=agap_normal
+####SBATCH -p unlimitq
 
 # Environment
 module purge
-module load snakemake
+module load bioinfo/snakemake-5.25.0
 
 # Variables
-CONFIG=config/ressources.muse.yaml
+CONFIG=config/ressources.genologin.yaml
 COMMAND="sbatch --cpus-per-task={cluster.cpus} --time={cluster.time} --mem={cluster.mem} -J {cluster.jobname} -o snake_subjob_log/{cluster.jobname}.%N.%j.out -e snake_subjob_log/{cluster.jobname}.%N.%j.err"
 CORES=100
 mkdir -p snake_subjob_log
