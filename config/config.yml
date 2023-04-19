@@ -1,5 +1,5 @@
 # data
 driving_model: "NCC-NorESM1-M"
-experiment: "rcp85"
+experiment: ["historical", "rcp85"]
 rcm_model: "REMO2015"
-variable: "pr"
+variable: ["hurs", "pr", "rsds", "rsus", "sfcWind", "tas"]
