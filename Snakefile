@@ -1,4 +1,4 @@
-configfile: "config/config_test.yml"
+configfile: "config/config.yml"
 
 rule all:
    input:

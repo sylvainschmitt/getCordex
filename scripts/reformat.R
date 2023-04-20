@@ -64,7 +64,8 @@ data <- data0 %>%
   mutate(rainfall = 60*60*time_freq_hr*pr) %>% 
   mutate(snet = rsds - rsus) %>% 
   mutate(temperature = tas-273.15) %>% 
-  mutate(vpd = rh_to_vpd(hurs, temperature)) %>% 
+  mutate(vpd = rh_to_vpd(hurs, temperature)) %>%
+  mutate(vpd = ifelse(vpd < 0, 0, vpd)) %>% 
   mutate(ws = sfcWind) %>% 
   select(time, rainfall, snet, temperature, vpd, ws)
 # data %>%

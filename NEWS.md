@@ -1,3 +1,7 @@
+# getCordex 0.1.9006
+
+- full MPI-M-MPI-ESM-MR_ICTP-RegCM4-7 on genologin, fixed empty rows in historical
+
 # getCordex 0.1.9005
 
 - extrapolate, updated plot, & new MUSE test

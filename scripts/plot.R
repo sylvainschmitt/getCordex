@@ -10,7 +10,7 @@ var <-  as.character(snakemake@params$var)
 cordex <-  as.character(snakemake@params$cordex)
 
 # test
-# filein <- "results/table/MPI-M-MPI-ESM-MR_ICTP-RegCM4-7_rcp85.formatted.tsv"
+# filein <- "results/table/MPI-M-MPI-ESM-MR_ICTP-RegCM4-7_historical.formatted.tsv"
 # var <-  "temperature"
 # cordex <- "MPI-M-MPI-ESM-MR_ICTP-RegCM4-7_rcp85"
 
@@ -32,6 +32,20 @@ plot_tab <- function(tab)
 # code
 data <- vroom(filein, col_types = list(rainfall = col_double())) %>% 
   filter(year(time) < max(year(time)))
+
+# data %>%
+#   filter(time < min(as_date(time))+2) %>%
+#   gather(variable, value, -time) %>%
+#   ggplot(aes(time, value)) +
+#   geom_line() +
+#   geom_point() +
+#   facet_wrap(~variable, scales = "free") +
+#   theme_bw() +
+#   geom_vline(xintercept = as_datetime("2006-01-01 12:00:00")) +
+#   geom_vline(xintercept = as_datetime("2006-01-01 24:00:00")) +
+#   geom_vline(xintercept = as_datetime("2006-02-01 12:00:00")) +
+#   geom_vline(xintercept = as_datetime("2006-02-01 24:00:00")) # ! UTM time
+
 data <- data %>% 
   select(time, {var}) %>% 
   na.omit()
