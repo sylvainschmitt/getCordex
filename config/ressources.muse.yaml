@@ -9,3 +9,28 @@ download:
   mem: "4G"
   cpus: 1
   time: "48:00:00"  
+  
+extract:
+  jobname: "extract"
+  mem: "40G"
+  cpus: 10
+  time: "1:00:00"  
+
+join_exp:
+  jobname: "join_exp"
+  mem: "4G"
+  cpus: 1
+  time: "1:00:00"  
+
+reformat:
+  jobname: "reformat"
+  mem: "4G"
+  cpus: 1
+  time: "1:00:00"  
+
+plot:
+  jobname: "plot"
+  mem: "4G"
+  cpus: 1
+  time: "1:00:00"  
+  

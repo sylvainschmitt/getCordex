@@ -1,3 +1,7 @@
+# getCordex 0.1.9004
+
+- update README, prep config genologin, à ToDo
+
 # getCordex 0.1.9005
 
 - join_exp, reformat & plot

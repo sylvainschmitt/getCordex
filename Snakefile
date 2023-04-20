@@ -1,16 +1,17 @@
-configfile: "config/config_test.yml"
+configfile: "config/config.yml"
 
 rule all:
    input:
          expand("results/table/{driving_model}_{rcm_model}_{experiment}.formatted.tsv",
                  driving_model=config["driving_model"],
                  rcm_model=config["rcm_model"],
-                 experiment=config["experiment"]),
-         expand("results/figure/{driving_model}_{rcm_model}_{experiment}_{variable}.png",
-                 driving_model=config["driving_model"],
-                 rcm_model=config["rcm_model"],
-                 experiment=config["experiment"],
-                 variable=config["plot_variables"])
+                 experiment=config["experiment"])
+# Need to add patchwork to the singularity image to use it
+#         expand("results/figure/{driving_model}_{rcm_model}_{experiment}_{variable}.png",
+#                 driving_model=config["driving_model"],
+#                 rcm_model=config["rcm_model"],
+#                 experiment=config["experiment"],
+#                 variable=config["plot_variables"])
                 
 # Rules #
 include: "rules/download.smk"

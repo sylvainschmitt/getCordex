@@ -131,14 +131,35 @@ sbatch job_genologin.sh # run
 
 ### [download](https://github.com/sylvainschmitt/getCordex/blob/main/rules/download.smk)
 
+Download data from the [Institut Pierre-Simon Laplace node](https://esgf-node.ipsl.upmc.fr/search/cordex-ipsl/)
+using wget scripts from the [`wget/` folder](https://github.com/sylvainschmitt/getCordex/tree/main/wget).
+
 ### [extract_var](https://github.com/sylvainschmitt/getCordex/blob/main/rules/extract_var.smk)
 
 * Script: [`extract_var.R`](https://github.com/sylvainschmitt/getCordex/blob/main/scripts/extract_var.R)
+
+Extract variables from the netcdf files in parallel into one tsv table per experiment and variable.
 
 ### [join_exp](https://github.com/sylvainschmitt/getCordex/blob/main/rules/join_exp.smk)
 
 * Script: [`join_exp.R`](https://github.com/sylvainschmitt/getCordex/blob/main/scripts/join_exp.R)
 
-### Prepare for troll
+Join variables from the same experiment into one single tsv table.
 
-### Automatic report?
+### [reformat](https://github.com/sylvainschmitt/getCordex/blob/main/rules/reformat.smk)
+
+* Script: [`reformat.R`](https://github.com/sylvainschmitt/getCordex/blob/main/scripts/reformat.R)
+
+Reformat experiment variables into variables used in the TROLL model:
+
+* rainfall (rainfall in mm) = 60 * 60 * time_freq_hr * pr (Precipitation in kg/m/s)
+* snet (absorbed short-wave radiation in w/m2) = rsds (Surface Downwelling Shortwave Radiation in W/m2) - rsus (Surface Upwelling Shortwave Radiation in W/m2)
+* temperature (temperature in degrees C) = tas (Near-Surface Air Temperature in Kelvin) - 273.15
+* vpd (vapour pressure deficit in Pa) = rh_to_vpd[ hurs(Near-Surface Relative Humidity in %), temperature ]
+* ws (wind speed in m/s) = sfcWind (Near-Surface Wind Speed in m/s)
+
+### [plot](https://github.com/sylvainschmitt/getCordex/blob/main/rules/plot.smk)
+
+* Script: [`plot.R`](https://github.com/sylvainschmitt/getCordex/blob/main/scripts/plot.R)
+
+Plot TROLL variables into hourly, daily, monthly and yearly variation for each variable and experiment.
