@@ -8,7 +8,7 @@ rule extract_var:
     benchmark:
         "results/benchmarks/extract_var_{driving_model}_{rcm_model}_{experiment}_{variable}.benchmark.txt"
     singularity: 
-        "https://github.com/sylvainschmitt/singularity-r-bioinfo/releases/download/0.0.4/sylvainschmitt-singularity-r-bioinfo.latest.sif"
+        "https://github.com/sylvainschmitt/singularity-troll/releases/download/0.0.1/sylvainschmitt-singularity-troll.latest.sif"
     threads: 10
     params:
         var="{variable}",

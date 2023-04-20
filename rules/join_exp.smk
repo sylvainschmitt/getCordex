@@ -9,7 +9,7 @@ rule join_exp:
     benchmark:
         "results/benchmarks/join_exp_{driving_model}_{rcm_model}_{experiment}.benchmark.txt"
     singularity: 
-        "https://github.com/sylvainschmitt/singularity-r-bioinfo/releases/download/0.0.4/sylvainschmitt-singularity-r-bioinfo.latest.sif"
+        "https://github.com/sylvainschmitt/singularity-troll/releases/download/0.0.1/sylvainschmitt-singularity-troll.latest.sif"
     threads: 1
     script:
         "../scripts/join_exp.R"
