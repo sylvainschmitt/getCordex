@@ -11,6 +11,7 @@
 # Environment
 module purge
 module load bioinfo/snakemake-5.25.0
+module load system/singularity-3.7.3
 
 # Variables
 CONFIG=config/ressources.genologin.yaml
@@ -19,7 +20,7 @@ CORES=100
 mkdir -p snake_subjob_log
 
 # Workflow
-snakemake -s Snakefile -j $CORES --cluster-config $CONFIG --cluster "$COMMAND" --keep-going
+snakemake -s Snakefile --use-singularity -j $CORES --cluster-config $CONFIG --cluster "$COMMAND" --keep-going # maybe --singularity-args "\-\-containall" will be need to avoid conflict with local R env
 
 ## Session informations
 echo '########################################'
@@ -31,3 +32,4 @@ echo 'Job ID:' $SLURM_JOB_ID
 echo 'Number of nodes assigned to job:' $SLURM_JOB_NUM_NODES
 echo 'Nodes assigned to job:' $SLURM_JOB_NODELIST
 echo 'Directory:' $(pwd)
+echo '########################################'

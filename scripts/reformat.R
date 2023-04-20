@@ -9,7 +9,7 @@ fileout <- snakemake@output[[1]]
 time_freq_hr <-  as.numeric(snakemake@params$time_freq_hr)
 
 # test
-# filein <- "results/table/MPI-M-MPI-ESM-MR_ICTP-RegCM4-7_rcp85.joined.tsv"
+# filein <- "results/table/MPI-M-MPI-ESM-MR_ICTP-RegCM4-7_rcp85.extrapolated.tsv"
 # time_freq_hr <-  3
 
 # libraries
@@ -59,12 +59,20 @@ esat <- function(temp,
   return(esatval)
 }
 
-data <- vroom(filein)
-data <- data %>% 
+data0 <- vroom(filein, col_types = list(pr = col_double()))
+data <- data0 %>% 
   mutate(rainfall = 60*60*time_freq_hr*pr) %>% 
   mutate(snet = rsds - rsus) %>% 
   mutate(temperature = tas-273.15) %>% 
   mutate(vpd = rh_to_vpd(hurs, temperature)) %>% 
   mutate(ws = sfcWind) %>% 
   select(time, rainfall, snet, temperature, vpd, ws)
+# data %>%
+#   filter(time < min(as_date(time))+31) %>%
+#   gather(variable, value, -time) %>%
+#   ggplot(aes(time, value)) +
+#   geom_line() +
+#   geom_point() +
+#   facet_wrap(~variable, scales = "free") +
+#   theme_bw()
 vroom_write(data, file = fileout)

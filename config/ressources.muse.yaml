@@ -3,34 +3,47 @@ __default__:
   mem: "10G"
   cpus: 1
   time: "48:00:00"
+  partition: "agap_normal"
 
 download:
   jobname: "download"
   mem: "4G"
   cpus: 1
   time: "48:00:00"  
+  partition: "agap_normal"
   
 extract:
   jobname: "extract"
   mem: "40G"
   cpus: 10
   time: "1:00:00"  
+  partition: "agap_short"
 
 join_exp:
   jobname: "join_exp"
   mem: "4G"
   cpus: 1
-  time: "1:00:00"  
+  time: "1:00:00"
+  partition: "agap_short"
 
+extrapolate:
+  jobname: "extrapolate"
+  mem: "4G"
+  cpus: 1
+  time: "1:00:00" 
+  partition: "agap_short"
+  
 reformat:
   jobname: "reformat"
   mem: "4G"
   cpus: 1
   time: "1:00:00"  
+  partition: "agap_short"
 
 plot:
   jobname: "plot"
   mem: "4G"
   cpus: 1
   time: "1:00:00"  
+  partition: "agap_short"
   

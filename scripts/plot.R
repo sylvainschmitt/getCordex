@@ -11,7 +11,7 @@ cordex <-  as.character(snakemake@params$cordex)
 
 # test
 # filein <- "results/table/MPI-M-MPI-ESM-MR_ICTP-RegCM4-7_rcp85.formatted.tsv"
-# var <-  "vpd"
+# var <-  "temperature"
 # cordex <- "MPI-M-MPI-ESM-MR_ICTP-RegCM4-7_rcp85"
 
 # libraries
@@ -30,7 +30,7 @@ plot_tab <- function(tab)
   xlab("")
 
 # code
-data <- vroom(filein) %>% 
+data <- vroom(filein, col_types = list(rainfall = col_double())) %>% 
   filter(year(time) < max(year(time)))
 data <- data %>% 
   select(time, {var}) %>% 
@@ -52,20 +52,46 @@ lab <- switch (var,
   "vpd" = "Vapour pressure deficit (Pa)",
   "ws" = "wind speed (m/s)"
 )
-g <- list("day", "month", "year") %>% 
-  lapply(function(x) summarise_tab(data, x, fun)) %>% 
-  lapply(plot_tab)
-names(g) <- c("day", "month", "year") 
-g$hour <- filter(data, year(time) == max(year(data$time))) %>% 
-  plot_tab()
 
-g_tot <- (
-  (g$hour + geom() + ggtitle("Hourly in last year") + ylab(lab)) +
-    (g$day + geom() + ggtitle("Daily") + ylab(lab))
-) / (
-  (g$month + geom() + ggtitle("Monthly") + ylab(lab)) +
-  (g$year + geom() + ggtitle("Yearly") + ylab(lab))
-) +
-  plot_annotation(cordex)
+g_hour <- data %>%
+  filter(time > max(date(time))-31) %>% 
+  plot_tab() +
+  geom() + 
+  # geom_point() +
+  ggtitle("Half-hourly in the last month") + 
+  ylab(lab)
+
+g_day <- data %>%
+  filter(year(time) > max(year(time))-10) %>% 
+  group_by(time = floor_date(time, "day")) %>% 
+  summarise_all(fun, na.rm = TRUE) %>% 
+  plot_tab() +
+  geom() + 
+  # geom_point() +
+  ggtitle("Daily in the last decade") + 
+  ylab(lab)
+
+g_month <- data %>%
+  filter(year(time) > max(year(time))-100) %>% 
+  group_by(time = floor_date(time, "month")) %>% 
+  summarise_all(fun, na.rm = TRUE) %>% 
+  plot_tab() +
+  geom_smooth(col = "red", se = F) +
+  geom() + 
+  # geom_point() +
+  ggtitle("Monthly in the last century") + 
+  ylab(lab)
+
+g_year <- data %>%
+  group_by(time = floor_date(time, "year")) %>% 
+  summarise_all(fun, na.rm = TRUE) %>% 
+  plot_tab() +
+  geom_smooth(col = "red", se = F) +
+  geom() + 
+  # geom_point() +
+  ggtitle("Yearly") + 
+  ylab(lab)
+
+g_tot <- (g_hour + g_day) / (g_month + g_year) + plot_annotation(cordex)
 
 ggsave(g_tot, filename = fileout)

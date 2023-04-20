@@ -22,8 +22,14 @@ join_exp:
   cpus: 1
   time: "1:00:00"  
 
-reformat:
-  jobname: "reformat"
+join_exp:
+  jobname: "join_exp"
+  mem: "4G"
+  cpus: 1
+  time: "1:00:00"  
+
+extrapolate:
+  jobname: "extrapolate"
   mem: "4G"
   cpus: 1
   time: "1:00:00"  

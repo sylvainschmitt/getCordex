@@ -1,6 +1,6 @@
 rule reformat:
     input:
-        "results/table/{driving_model}_{rcm_model}_{experiment}.joined.tsv"
+        "results/table/{driving_model}_{rcm_model}_{experiment}.extrapolated.tsv"
     output:
         "results/table/{driving_model}_{rcm_model}_{experiment}.formatted.tsv"
     log:

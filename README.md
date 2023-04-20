@@ -154,6 +154,14 @@ per experiment and variable.
 
 Join variables from the same experiment into one single tsv table.
 
+### [extrapolate](https://github.com/sylvainschmitt/getCordex/blob/main/rules/extrapolate.smk)
+
+- Script:
+  [`extrapolate.R`](https://github.com/sylvainschmitt/getCordex/blob/main/scripts/extrapolate.R)
+
+Extrapolate variables at defined time frequency (config:
+`extrapolation_time_freq`, defined at 0.5hr for TROLL) with splines.
+
 ### [reformat](https://github.com/sylvainschmitt/getCordex/blob/main/rules/reformat.smk)
 
 - Script:
