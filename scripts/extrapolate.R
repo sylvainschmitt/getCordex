@@ -9,7 +9,7 @@ fileout <- snakemake@output[[1]]
 time_freq <- as.numeric(snakemake@params$time_freq)
 
 # test
-# filein <- "results/table/MPI-M-MPI-ESM-MR_ICTP-RegCM4-7_historical.joined.tsv"
+# filein <- "results/table/MPI-M-MPI-ESM-MR_ICTP-RegCM4-7_rcp26.joined.tsv"
 # time_freq <- 30
 
 # libraries
@@ -17,8 +17,19 @@ suppressMessages(library(tidyverse))
 library(vroom)
 
 # code
-data0 <- vroom(filein) %>% 
-  filter(!(is.na(hurs) & is.na(pr) & is.na(rsds) & is.na(rsus) & is.na(sfcWind) & is.na(tas)))
+
+data <- vroom(filein)
+time <- data$time
+data0 <- data %>% 
+  gather(variable, value, -time) %>% 
+  na.omit() %>% 
+  separate(variable, c("variable", "table")) %>% 
+  select(-table) %>% 
+  group_by(time, variable) %>% 
+  summarise_all(mean) %>% 
+  pivot_wider(names_from = "variable", values_from = "value")
+data0 <- tibble(time = time) %>% 
+  left_join(data0)
 
 start <- as_datetime(as_date(min(data0$time)))+60*30 # to start from 00:30
 stop <- max(data0$time) # to stop at 00:00

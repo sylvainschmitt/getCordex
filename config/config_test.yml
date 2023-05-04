@@ -9,5 +9,6 @@ time_freq_hr: 3
 # Set for Paracou
 xutm: 5.267241344232334
 yutm: -52.92436802555797
+tz: "America/Cayenne"
 extrapolation_time_freq: 0.5
 plot_variables: ["rainfall", "snet", "temperature", "vpd", "ws"]

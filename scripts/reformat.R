@@ -6,7 +6,8 @@ sink(log_file, append = TRUE)
 # snakemake vars
 filein <- snakemake@input[[1]]
 fileout <- snakemake@output[[1]]
-time_freq_hr <-  as.numeric(snakemake@params$time_freq_hr)
+time_freq_hr <- as.numeric(snakemake@params$time_freq_hr)
+tz <- snakemake@params$tz
 
 # test
 # filein <- "results/table/MPI-M-MPI-ESM-MR_ICTP-RegCM4-7_rcp85.extrapolated.tsv"
@@ -58,6 +59,18 @@ esat <- function(temp,
   esatval <- f * a * (exp(b * temp/(c + temp)))
   return(esatval)
 }
+adjust_time <- function(data,
+                        tz = "America/Cayenne"){
+  warning("Need to add arguments check")
+  
+  d0 <- date(data$time[1])
+  t0 <- t1 <- data$time[1]
+  t1 <- force_tz(t1, tz)
+  tlag <- t1 - as.POSIXct(t0)
+  data$time <- data$time - tlag
+  data <- filter(data, date(time) > (d0 - 1))
+  return(data)
+}
 
 data0 <- vroom(filein, col_types = list(pr = col_double()))
 data <- data0 %>% 
@@ -67,7 +80,8 @@ data <- data0 %>%
   mutate(vpd = rh_to_vpd(hurs, temperature)) %>%
   mutate(vpd = ifelse(vpd < 0, 0, vpd)) %>% 
   mutate(ws = sfcWind) %>% 
-  select(time, rainfall, snet, temperature, vpd, ws)
+  select(time, rainfall, snet, temperature, vpd, ws) %>% 
+  adjust_time(tz = tz)
 # data %>%
 #   filter(time < min(as_date(time))+31) %>%
 #   gather(variable, value, -time) %>%

@@ -1,3 +1,7 @@
+# getCordex 0.1.9007
+
+- fixed join and adjust_time
+
 # getCordex 0.1.9006
 
 - full MPI-M-MPI-ESM-MR_ICTP-RegCM4-7 on genologin, fixed empty rows in historical

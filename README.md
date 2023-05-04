@@ -18,8 +18,8 @@ workflow to download projection data from CORDEX.
 
 # Data
 
-**[CORDEX](https://cordex.org/): Cordinated Regional Climae Downscaling
-Experiment**
+**[CORDEX](https://cordex.org/): Coordinated Regional Climate
+Downscaling Experiment**
 
 *The CORDEX vision is to advance and coordinate the science and
 application of regional climate downscaling through global

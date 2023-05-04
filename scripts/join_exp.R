@@ -8,7 +8,7 @@ var_tables <- snakemake@input
 fileout <- snakemake@output[[1]]
 
 # test
-var_tables <- list.files("results/table/", full.names = T)[-7]
+# var_tables <- list.files("results/table/", full.names = T)[-7]
 
 # libraries
 suppressMessages(library(tidyverse))

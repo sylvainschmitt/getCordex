@@ -11,7 +11,8 @@ rule reformat:
         "https://github.com/sylvainschmitt/singularity-troll/releases/download/0.0.1/sylvainschmitt-singularity-troll.latest.sif"
     threads: 1
     params:
-        time_freq_hr=config["time_freq_hr"]
+        time_freq_hr=config["time_freq_hr"],
+        tz=config["tz"]
     script:
         "../scripts/reformat.R"
         
