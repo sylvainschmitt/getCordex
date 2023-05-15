@@ -36,10 +36,10 @@ Humidity** (hurs), **Near-Surface Wind Speed** (sfcWind),
 restricted outputs at a **3hr** time-frequency and used the last
 available downscaling (**v1**). We used 3 types of experiments: one
 historical (**historical**) and two Representative Concentration Pathway
-RCP 2.6 & 8.5 (**rcp26** & **rcp85**). We had 5 driving models available
-(**ECMWF-ERAINT**, **MOHC-HadGEM2-ES**, **MPI-M-MPI-ESM-LR**,
-**MPI-M-MPI-ESM-MR**, **NCC-NorESM1-M**) coupled with 2 RCM model
-(**REMO2015** & **RegCM4-7**).
+RCP 2.6 & 8.5 (**rcp26** & **rcp85**). We have 3 driving models
+available (**MOHC-HadGEM2-ES**, **MPI-M-MPI-ESM-(LR or MR)**, and,
+**NCC-NorESM1-M**) coupled with 2 RCM model (**REMO2015** &
+**RegCM4-7**).
 
 Data are retrieve from the [Institut Pierre-Simon Laplace
 node](https://esgf-node.ipsl.upmc.fr/search/cordex-ipsl/). You need

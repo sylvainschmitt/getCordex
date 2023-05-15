@@ -1,5 +1,5 @@
 # data
-driving_model: "MPI-M-MPI-ESM-MR"
+driving_model: "MPI-M-MPI-ESM"
 rcm_model: "ICTP-RegCM4-7"
 experiment: "rcp85"
 variable: ["hurs", "pr", "rsds", "rsus", "sfcWind", "tas"]
@@ -12,3 +12,6 @@ yutm: -52.92436802555797
 tz: "America/Cayenne"
 extrapolation_time_freq: 0.5
 plot_variables: ["rainfall", "snet", "temperature", "vpd", "ws"]
+
+# singularity
+troll: "https://github.com/sylvainschmitt/singularity-troll/releases/download/0.0.3/sylvainschmitt-singularity-troll.latest.sif"

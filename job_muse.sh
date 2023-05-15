@@ -21,7 +21,7 @@ CORES=100
 mkdir -p snake_subjob_log
 
 # Workflow
-snakemake -s Snakefile --use-singularity -j $CORES --cluster-config $CONFIG --cluster "$COMMAND" --keep-going # maybe --singularity-args "\-\-containall" will be need to avoid conflict with local R env
+snakemake -s Snakefile --use-singularity -j $CORES --cluster-config $CONFIG --cluster "$COMMAND" --keep-going
 
 ## Session informations
 echo '########################################'

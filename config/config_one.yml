@@ -1,5 +1,5 @@
 # data
-driving_model: "MPI-M-MPI-ESM-MR"
+driving_model: "MPI-M-MPI-ESM"
 rcm_model: "ICTP-RegCM4-7"
 experiment: ["historical", "rcp26", "rcp85"]
 variable: ["hurs", "pr", "rsds", "rsus", "sfcWind", "tas"]
