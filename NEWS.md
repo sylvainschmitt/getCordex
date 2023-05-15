@@ -1,3 +1,7 @@
+# getCordex 0.1.9009
+
+- "MPI-M-MPI-ESM" for MPI-M-MPI-ESM-LR_REMO2015 & MPI-M-MPI-ESM-MR_ICTP-RegCM4-7
+
 # getCordex 0.1.9008
 
 - adding singularity img link in config for version change
