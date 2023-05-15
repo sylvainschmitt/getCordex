@@ -8,7 +8,7 @@ rule extrapolate:
     benchmark:
         "results/benchmarks/extrapolate_{driving_model}_{rcm_model}_{experiment}.benchmark.txt"
     singularity: 
-        "https://github.com/sylvainschmitt/singularity-troll/releases/download/0.0.1/sylvainschmitt-singularity-troll.latest.sif"
+        config["troll"]
     threads: 1
     params:
         time_freq_hr=config["extrapolation_time_freq"]

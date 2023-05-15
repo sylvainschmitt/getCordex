@@ -7,6 +7,8 @@ rule plot:
         "results/logs/plot_{driving_model}_{rcm_model}_{experiment}_{variable}.log"
     benchmark:
         "results/benchmarks/plot_{driving_model}_{rcm_model}_{experiment}_{variable}.benchmark.txt"
+    singularity: 
+        config["troll"]
     threads: 1
     params:
         var="{variable}",

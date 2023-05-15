@@ -1,3 +1,9 @@
+# getCordex 0.1.9008
+
+- adding singularity img link in config for version change
+- config_all for all models
+- wget for MOHC-HadGEM2 for all RCMs and scenari
+
 # getCordex 0.1.9007
 
 - fixed join and adjust_time
