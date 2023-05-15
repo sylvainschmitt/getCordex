@@ -2,7 +2,7 @@ rule download:
     input:
         "wget/{driving_model}_{rcm_model}.{experiment}.sh"
     output:
-        directory("results/{driving_model}_{rcm_model}/{experiment}/")
+        temp(directory("results/{driving_model}_{rcm_model}/{experiment}/"))
     log:
         "results/logs/download_{driving_model}_{rcm_model}_{experiment}.log"
     benchmark:
