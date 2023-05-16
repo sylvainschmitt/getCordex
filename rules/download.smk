@@ -13,6 +13,8 @@ rule download:
     resources:
         mem_mb=1000
     shell:
+        "module load java ; " # only for muse, need to add a condition
+        "ESG_HOME='.esg/' ; " # only for muse, need to add a condition
         "mkdir -p {output} ; "
         "cp {input} {output} ; "
         "cd {output} ; "

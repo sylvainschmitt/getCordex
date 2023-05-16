@@ -12,8 +12,8 @@ download:
   time: "24:00:00"  
   partition: "agap_normal"
   
-extract:
-  jobname: "extract"
+extract_var:
+  jobname: "extract_var"
   mem: "40G"
   cpus: 10
   time: "1:00:00"  
