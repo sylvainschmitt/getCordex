@@ -1,3 +1,7 @@
+# getCordex 0.1.9011
+
+- cleaning
+
 # getCordex 0.1.9010
 
 - wget for NCC-NorESM1-M for all RCMs and scenari
